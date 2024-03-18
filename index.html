@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    input {
+        margin-bottom: 10px;
+        padding: 5px;
+        width: 300px;
+    }
+    .valid {
+        border: 2px;
+        background-color: green;
+    }
+    .invalid {
+        border: 2px ;
+        background-color: red;
+    }
+    
+</style>
+</head>
+<body>
+
+<input id="textInput" type="text" placeholder="Введите ссылку">
+<input id="emailInput" type="text" placeholder="Введите email">
+
+<script>
+    const textInput = document.getElementById('textInput');
+    const emailInput = document.getElementById('emailInput');
+
+    textInput.addEventListener('input', function() {
+        const value = this.value;
+        if (value.includes('.') && (value.includes('https://') || value.includes('http://'))) {
+            this.classList.remove('invalid');
+            this.classList.add('valid');
+        } else {
+            this.classList.remove('valid');
+            this.classList.add('invalid');
+        }
+    });
+
+    emailInput.addEventListener('input', function() {
+        const value = this.value;
+        if (value.includes('.') && value.includes('@')) {
+            this.classList.remove('invalid');
+            this.classList.add('valid');
+        } else {
+            this.classList.remove('valid');
+            this.classList.add('invalid');
+        }
+    });
+</script>
+
+</body>
+</html>
